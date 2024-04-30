@@ -11,7 +11,7 @@ const Footer = () => {
             <Img h="20px" src='/images/facebook.png'/>
             <Img h="20px" src='/images/instagram.png'/>
         </Flex>
-        <Text>Copywright 2024 DNXEMPIRE.com</Text>
+        <Text color="#5C5C5C" textAlign="center">{isLargerThan800 ? ("Copywright 2024 DNXEMPIRE.com") : ("Just type what's on your mind and we'll ")}</Text>
     </Flex>
   )
 }
