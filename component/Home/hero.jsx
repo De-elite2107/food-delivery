@@ -1,28 +1,31 @@
-import { Box, Text, Flex, Button, Img } from '@chakra-ui/react';
+import { Box, Text, Flex, Button, Img, useMediaQuery } from '@chakra-ui/react';
 import React from 'react'
 
 const HomeHero = () => {
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
     <Box>
       <Box
-      bgImage="/images/home/hero.png"
+      bgImage={isLargerThan800 && ("/images/home/hero.png")}
+      bgColor={!isLargerThan800 && ("#FAFAFA")}
       bgRepeat="no-repeat"
       bgSize="100% 100%"
       minH="40rem"
       p="3rem"
-      color="white"
+      color={isLargerThan800 && ("white")}
       >
         <Text
         textAlign="center"
-        fontSize="24px"
+        fontSize={isLargerThan800 ? "24px" : "16px"}
         fontWeight="700"
         mb="2rem"
+        color={!isLargerThan800 && ("#737373")}
         >
           Food app
         </Text>
         <Text
         textAlign="center"
-        fontSize="53px"
+        fontSize={isLargerThan800 ? "53px" : "36px"}
         fontWeight="700"
         mb="2rem"
         >
@@ -33,12 +36,13 @@ const HomeHero = () => {
         fontSize="24px"
         fontWeight="500"
         mb="4rem"
+        color={!isLargerThan800 && ("#737373")}
         >
           Download the bella onoje’s food app now on
         </Text>
-        <Flex justifyContent="center">
+        <Flex gap={3} justifyContent="center" flexWrap="wrap">
           <Button
-          mr="3rem"
+          mr={isLargerThan800 && ("3rem")}
           fontWeight={700}
           borderRadius="30px"
           bg="#FA4A0C"
@@ -51,8 +55,8 @@ const HomeHero = () => {
           fontWeight={700}
           borderRadius="30px"
           bg="transparent"
-          border="1px solid #FFFFFF"
-          color="white"
+          border={isLargerThan800 ? ("1px solid #FFFFFF") : ("1px solid #FA4A0C")}
+          color={isLargerThan800 ? ("white") : ("#FA4A0C")}
           w="15rem"
           >
             App store
@@ -66,7 +70,7 @@ const HomeHero = () => {
           top={-270}
           m="0 auto"
           // w="10rem"
-          pos="absolute"
+          pos={isLargerThan800 && ("absolute")}
           src='/images/home/dev1.png'
         />
       </Box>

@@ -1,10 +1,11 @@
-import { Box, Flex, Text, Img } from '@chakra-ui/react'
+import { Box, Flex, Text, Img, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
 
 const Footer = () => {
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
-    <Flex h="10rem" alignItems="center" justifyContent="space-around">
-        <Box><Img src="/images/Logo.png"/></Box>
+    <Flex maxH="10rem" p={isLargerThan800 ? ("5rem"): ("2rem")} alignItems="center" justifyContent={isLargerThan800 ? ("space-between") : ("center")} flexWrap={!isLargerThan800 && ("wrap")}>
+        {isLargerThan800 && (<Box><Img src="/images/Logo.png"/></Box>)}
         <Flex h="2rem" gap={4}>
             <Img h="20px" src='/images/twitter.png'/>
             <Img h="20px" src='/images/facebook.png'/>

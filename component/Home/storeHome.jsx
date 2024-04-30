@@ -1,7 +1,8 @@
-import { Flex, Text, Button } from '@chakra-ui/react';
+import { Flex, Text, Button, useMediaQuery } from '@chakra-ui/react';
 import React from 'react'
 
 const StoreHome = () => {
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
     <Flex
     justifyContent="center"
@@ -9,12 +10,13 @@ const StoreHome = () => {
     color="white"
     alignItems="center"
     minH="30rem"
-    bgImage="/images/home/store.png"
+    bgImage={isLargerThan800 && ("/images/home/store.png")}
+    bgColor={!isLargerThan800 && ("#252B42")}
     bgRepeat="no-repeat"
     bgSize="100% 100%"
     >
         <Text textAlign="center" fontWeight={700} fontSize="40px">Download the app now.</Text>
-        <Text mb="3rem" textAlign="center" fontWeight={500} fontSize="24px">Available on your favorite store. Start your premium experience now</Text>
+        {isLargerThan800 ?(<Text mb="3rem" textAlign="center" fontWeight={500} fontSize="24px">Available on your favorite store. Start your premium experience now</Text>) : (<Text mb="3rem" textAlign="center" fontWeight={500} fontSize="24px">Most calendars are designed for teams. </Text>)}
         <Flex justifyContent="center">
           <Button
           mr="1rem"
@@ -24,7 +26,7 @@ const StoreHome = () => {
           color="white"
           w="10rem"
           >
-            Playstore
+            {isLargerThan800 ? ("Playstore"): ("Buy now")}
           </Button>
           <Button
           fontWeight={700}
@@ -34,7 +36,7 @@ const StoreHome = () => {
           color="white"
           w="10rem"
           >
-            App store
+            {isLargerThan800 ? ("App store") : ("Try for free")}
           </Button>
         </Flex>
     </Flex>
